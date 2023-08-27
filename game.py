@@ -44,18 +44,19 @@ def drawARoom():
     global room
     global roomWindow
     global player
+    updatedPlayerDrawElements:list =[]
     roomWindow = GraphWin(room.getName, *room.dimensions)
     roomWindow.setBackground(room.background)
-    # playerToDraw = player.getPlayerToDraw
-    # for element in playerToDraw:
-    #     element.draw(roomWindow)
+   
     key = ""
     while key != "q":
-        playerToDraw = player.getPlayerToDraw
-        for element in playerToDraw:
+        for element in updatedPlayerDrawElements:
+            element.undraw()
+        updatedPlayerDrawElements=[*player.getPlayerToDraw]
+        for element in updatedPlayerDrawElements:
             element.draw(roomWindow)
         key = handleUserKeys(player)
-
+        
     roomWindow.close()
 
 
@@ -63,23 +64,18 @@ def handleUserKeys(player: Player):
     global roomWindow
     key = roomWindow.getKey()
     player.react(key)
-    print(key)
+    
     match key:
         case "Up":
-            print("going UP")
-
+            print("going forward")
         case "Left":
-            print("going LEFT")
+            print("turning left")
         case "Right":
-            print("going RIGHT")
+            print("turning right")
         case "Down":
-            print("going DOWN")
+            print("going back")
 
     return key
-
-    # for element in gameScreen:
-    #     element.draw(roomWindow)
-
 
 if __name__ == "__main__":
     main()

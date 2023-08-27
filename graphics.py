@@ -490,7 +490,6 @@ class GraphicsObject:
 
             
     def undraw(self):
-
         """Undraw the object (i.e. hide it). Returns silently if the
         object is not currently drawn."""
         
