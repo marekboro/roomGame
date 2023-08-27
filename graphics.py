@@ -249,6 +249,7 @@ class GraphWin(tk.Canvas):
             raise GraphicsError("window is closed")
 
     def _onKey(self, evnt):
+        # print(evnt)
         self.lastKey = evnt.keysym
 
 
